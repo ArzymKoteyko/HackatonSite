@@ -101,9 +101,19 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
         )))}
       </ul>
       <footer className="Place__footer">
-        <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
-          Оформить заказ ({price})
-        </Link>
+		{(function() {
+			let a = parseInt(price) 
+			if (a != 0) {
+				return(
+				<Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
+					Оформить заказ ({price})
+				</Link>
+				)
+			}
+			else {
+				return(<p></p>)
+			}
+		})()}
       </footer>
     </div>
   );
